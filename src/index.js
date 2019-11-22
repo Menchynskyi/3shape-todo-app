@@ -1,12 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { App } from './App';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const GlobalStyle = createGlobalStyle`
+  body {
+    @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    color: ${props => props.theme.black};
+    font-size: ${props => props.theme.fontSize};
+    font-family: ${props => props.theme.fontFamily};
+  }
+`;
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const theme = {
+  primary: '#D1004B',
+  white: '#FFFFFF',
+  black: '#000000',
+  fontSize: '16px',
+  fontFamily: 'Roboto'
+};
+
+ReactDOM.render(
+    <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <App />
+    </ThemeProvider>, 
+    document.getElementById('root')
+);
