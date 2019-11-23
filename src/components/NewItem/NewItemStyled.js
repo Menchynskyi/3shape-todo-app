@@ -10,7 +10,7 @@ export const ItemContainer = styled.div`
         width: 100%;
         border-top: 2px solid ${props => props.theme.primary};
         margin: 0;
-    }
+    };
 
     & button{
         &:hover {
@@ -27,7 +27,7 @@ export const ItemContainer = styled.div`
 
         &[disabled] {
             cursor: not-allowed;
-        }
+        };
     };
 `;
 

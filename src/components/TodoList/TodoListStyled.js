@@ -18,9 +18,13 @@ export const Task = styled.div`
 
     &:hover {
         cursor: pointer;
-    }
+    };
+    
+    &:active {
+        transform: scale(0.98);
+    };
 
     & span {
         padding-left: 20px;
-    }
+    };
 `;

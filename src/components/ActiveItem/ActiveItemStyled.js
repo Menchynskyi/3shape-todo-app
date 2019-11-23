@@ -8,7 +8,7 @@ export const StyledEditName = styled(StyledFieldName)`
 export const DeleteButton = styled.button`
     margin: auto 1.5rem;
     padding: 5px 20px;
-    background: #E28417;
+    background: ${props => props.theme.secondary};
     color: ${props => props.theme.white};
     font-size: 10px;
     line-height: 12px;

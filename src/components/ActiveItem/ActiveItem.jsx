@@ -8,9 +8,11 @@ import {
     SaveButton } from '../NewItem/NewItemStyled';
 import { StyledEditName, DeleteButton } from './ActiveItemStyled';
 import { Formik } from 'formik';
+import PropTypes from 'prop-types';
 
 export const ActiveItem = ({ deleteTask, changeTask }) => {
     const { active } = useContext(TodoContext);
+    
     return (
         <ItemContainer>
             <Formik
@@ -63,4 +65,9 @@ export const ActiveItem = ({ deleteTask, changeTask }) => {
             </Formik>
         </ItemContainer>
     );
+};
+
+ActiveItem.propTypes = {
+    deleteTask: PropTypes.func.isRequired,
+    changeTask: PropTypes.func.isRequired
 };
