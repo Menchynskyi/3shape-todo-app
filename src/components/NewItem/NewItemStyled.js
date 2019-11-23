@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
 
-export const NewItemContainer = styled.div`
+export const ItemContainer = styled.div`
     border: 2px solid ${props => props.theme.primary};
     border-radius: 5px;
     margin-bottom: 1.5rem;
@@ -13,26 +13,21 @@ export const NewItemContainer = styled.div`
     }
 
     & button{
-        font-size: 16px;
-        width: 15%;
-        height: 34px;
-        margin-bottom: 1rem;
-        
-        &:first-of-type {
-            margin-left: auto;
-            background: ${props => props.theme.white};
-            color: ${props => props.theme.primary};
-            border: 1px solid ${props => props.theme.primary};
+        &:hover {
+            cursor: pointer;
         };
 
-        &:last-of-type {
-            margin-right: 2rem;
-            margin-left: 2rem;
-            background: ${props => props.theme.primary};
-            color: ${props => props.theme.white};
-            border: none;
-            border-radius: 3px;
+        &:focus {
+            outline: none;
         };
+
+        &:active {
+            transform: scale(0.98);
+        };
+
+        &[disabled] {
+            cursor: not-allowed;
+        }
     };
 `;
 
@@ -40,6 +35,7 @@ export const AddForm = styled.form`
     display: flex;
     flex-flow: row wrap;
     align-items: flex-end;
+    justify-content: space-between;
 `;
 
 export const StyledFieldName = styled(Field)`
@@ -57,8 +53,32 @@ export const StyledFieldDescription = styled(Field)`
     border-radius: 5px;
     outline: none;    
     padding: 20px;
-    font-size: ${props => props.theme.fontSize};
     font-family: ${props => props.theme.fontFamily};
+    font-size: ${props => props.theme.fontSize};
     resize: none;
     width: 50%;
+`;
+
+export const CancelButton = styled.button`
+    width: 15%;
+    height: 34px;
+    margin-left: auto;
+    background: ${props => props.theme.white};
+    color: ${props => props.theme.primary};
+    border: 1px solid ${props => props.theme.primary};
+    margin-bottom: 1rem;
+    font-size: ${props => props.theme.fontSize};
+`;
+
+export const SaveButton = styled.button`
+    width: 15%;
+    height: 34px;
+    margin-right: 1.5rem;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+    background: ${props => props.theme.primary};
+    color: ${props => props.theme.white};
+    font-size: ${props => props.theme.fontSize};
+    border: none;
+    border-radius: 3px;
 `;

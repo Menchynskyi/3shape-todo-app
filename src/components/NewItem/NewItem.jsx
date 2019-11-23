@@ -1,10 +1,16 @@
 import React from 'react';
-import { NewItemContainer, StyledFieldName, StyledFieldDescription, AddForm } from './NewItemStyled';
+import { 
+    ItemContainer, 
+    StyledFieldName, 
+    StyledFieldDescription, 
+    AddForm, 
+    CancelButton, 
+    SaveButton } from './NewItemStyled';
 import { Formik } from 'formik';
 
 export const NewItem = ({ onAddFormSubmit }) => {
     return (
-        <NewItemContainer>
+        <ItemContainer>
             <Formik
                 initialValues={{
                     name: '',
@@ -30,20 +36,21 @@ export const NewItem = ({ onAddFormSubmit }) => {
                                     component="textarea"
                                     rows="5" 
                                     />
-                                <button 
+                                <CancelButton
+                                    type="button" 
                                     onClick={handleReset}
                                     >
                                     CANCEL
-                                </button>
-                                <button 
+                                </CancelButton>
+                                <SaveButton 
                                     disabled={!dirty}
                                     type="submit">
                                     ADD
-                                </button>
+                                </SaveButton>
                             </AddForm>
                         )
                     }
             </Formik>
-        </NewItemContainer>
+        </ItemContainer>
     );
 };

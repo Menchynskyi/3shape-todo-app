@@ -7,19 +7,14 @@ import { AppContainer, StyledButton } from './AppStyled';
 export const TodoContext = createContext();
 
 const initialState = {
-  todoList: [
-    { id: 1, name: 'task 1', description: 'task 1 description' },
-    { id: 2, name: 'task 2', description: 'task 2 description' },
-    { id: 3, name: 'task 3', description: 'task 3 description' },
-    { id: 4, name: 'task 4', description: 'task 4 description' },
-  ],
+  todoList: [],
   active: null,
-  showNew: false
+  showNew: true
 };
 
 export const App = () => {
   const [state, setState] = useState(initialState);
-  const [id, setId] = useState(100);
+  const [id, setId] = useState(0);
 
   const { todoList, active } = state;
 
@@ -46,6 +41,7 @@ export const App = () => {
   };
 
   const changeTask = task => {
+    console.log(task)
     const newTasks = todoList.map(t => {
       if (t.id === task.id) {
         return task;
@@ -88,7 +84,8 @@ export const App = () => {
     
     setState({
       ...state,
-      todoList: [...todoList, newTodo]
+      todoList: [...todoList, newTodo],
+      showNew: false
     });
   };
 
@@ -96,8 +93,21 @@ export const App = () => {
     <TodoContext.Provider value={context}>
         <AppContainer>
 
-          { state.active && <ActiveItem /> }
-          { state.showNew && <NewItem onAddFormSubmit={addTodoListItem}/> }
+          { 
+            state.active && 
+            <ActiveItem 
+              key={active.id}
+              deleteTask={deleteTask}
+              changeTask={changeTask}/> 
+          }
+
+          { 
+            state.showNew && 
+            <NewItem  
+              onAddFormSubmit={addTodoListItem}
+              /> 
+          }
+
           <TodoList 
             onItemClick={onItemClick}/>
 
@@ -106,6 +116,7 @@ export const App = () => {
             >
             ADD NEW TASK
           </StyledButton>
+
         </AppContainer>
     </TodoContext.Provider>
   );

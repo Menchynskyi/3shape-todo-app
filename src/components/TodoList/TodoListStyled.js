@@ -8,7 +8,7 @@ export const TasksContainer = styled.div`
 `;
 
 export const Task = styled.div`
-    flex: 0 calc(30% + 4rem - 2px);
+    flex: 0 calc(30% + 3.5rem - 2px);
     display: flex;
     align-items: center;
     border: 2px solid #D1004B;
