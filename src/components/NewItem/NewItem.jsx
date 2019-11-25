@@ -9,7 +9,7 @@ import {
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 
-const validateField = (value) => {
+export const validateField = (value) => {
     const error = !value ? 
         'Enter task name' : 
         value.length > 15 ? 

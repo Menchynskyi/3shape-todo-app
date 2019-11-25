@@ -1,1 +1,1 @@
-export { NewItem } from './NewItem';
+export { NewItem, validateField } from './NewItem';

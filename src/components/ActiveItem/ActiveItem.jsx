@@ -8,6 +8,7 @@ import {
     SaveButton } from '../NewItem/NewItemStyled';
 import { StyledEditName, DeleteButton } from './ActiveItemStyled';
 import { Formik } from 'formik';
+import { validateField } from '../NewItem';
 import PropTypes from 'prop-types';
 
 export const ActiveItem = ({ deleteTask, changeTask }) => {
@@ -29,9 +30,10 @@ export const ActiveItem = ({ deleteTask, changeTask }) => {
                 }}
             >
                     {
-                        ({ handleSubmit, values, dirty, handleReset }) => (
+                        ({ handleSubmit, values, errors, handleReset, dirty }) => (
                             <AddForm onSubmit={handleSubmit}>
                                 <StyledEditName 
+                                    validate={validateField}
                                     placeholder="Type task name..." 
                                     name="name" 
                                     value={values.name} 
@@ -56,6 +58,8 @@ export const ActiveItem = ({ deleteTask, changeTask }) => {
                                     CANCEL
                                 </CancelButton>
                                 <SaveButton 
+                                    label={errors.name}
+                                    disabled={errors.name}
                                     type="submit">
                                     SAVE
                                 </SaveButton>

@@ -8,7 +8,7 @@ export const Container = styled.div`
     color: ${props => props.theme.black};
     font-size: ${props => props.theme.fontSize};
     font-family: ${props => props.theme.fontFamily};
-`
+`;
 
 export const AppContainer = styled.div`
     display: flex;
