@@ -1,5 +1,15 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+    display: flex;
+    justify-content: center;
+    @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+    margin: 0;
+    color: ${props => props.theme.black};
+    font-size: ${props => props.theme.fontSize};
+    font-family: ${props => props.theme.fontFamily};
+`
+
 export const AppContainer = styled.div`
     display: flex;
     flex-flow: column nowrap;

@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from 'react';
 import { NewItem } from './components/NewItem';
 import { ActiveItem } from './components/ActiveItem';
 import { TodoList } from './components/TodoList';
-import { AppContainer, StyledButton } from './AppStyled';
+import { AppContainer, StyledButton, Container } from './AppStyled';
 
 export const TodoContext = createContext();
 
@@ -112,33 +112,35 @@ export const App = () => {
 
     return (
         <TodoContext.Provider value={context}>
-            <AppContainer>
+            <Container>
+                <AppContainer>
 
-                {
-                    active &&
-                    <ActiveItem
-                        key={active.id}
-                        deleteTask={deleteTask}
-                        changeTask={changeTask}
-                    />
-                }
+                    {
+                        active &&
+                        <ActiveItem
+                            key={active.id}
+                            deleteTask={deleteTask}
+                            changeTask={changeTask}
+                        />
+                    }
 
-                {
-                    showNew &&
-                    <NewItem
-                        onAddFormSubmit={addTodoListItem}
-                    />
-                }
+                    {
+                        showNew &&
+                        <NewItem
+                            onAddFormSubmit={addTodoListItem}
+                        />
+                    }
 
-                <TodoList onItemClick={onItemClick} />
+                    <TodoList onItemClick={onItemClick} />
 
-                <StyledButton
-                    onClick={onShowNewTaskForm}
-                >
-                    ADD NEW TASK
+                    <StyledButton
+                        onClick={onShowNewTaskForm}
+                    >
+                        ADD NEW TASK
                 </StyledButton>
 
-            </AppContainer>
+                </AppContainer>
+            </Container>
         </TodoContext.Provider>
     );
 };
