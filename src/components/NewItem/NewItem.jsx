@@ -10,7 +10,11 @@ import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 
 const validateField = (value) => {
-    const error = !value ? 'Empty' : undefined;
+    const error = !value ? 
+        'Enter task name' : 
+        value.length > 15 ? 
+        'Task name is too long' : 
+        undefined;
 
     return error;
 };
@@ -52,6 +56,7 @@ export const NewItem = ({ onAddFormSubmit }) => (
                                     CANCEL
                                 </CancelButton>
                                 <SaveButton 
+                                    label={errors.name || `Enter task name`}
                                     disabled={!dirty || errors.name}
                                     type="submit"
                                 >

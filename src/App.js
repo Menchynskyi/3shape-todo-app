@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import { NewItem } from './components/NewItem';
 import { ActiveItem } from './components/ActiveItem';
 import { TodoList } from './components/TodoList';
@@ -22,6 +22,22 @@ export const App = () => {
     const [id, setId] = useState(100);
 
     const { todoList, active, showNew } = state;
+
+    useEffect(() => {
+        if (localStorage.getItem('todoList') !== null || localStorage.getItem('id') !== null) {
+            setState({
+                ...state,
+                todoList: JSON.parse(localStorage.getItem('todoList'))
+            });
+            setId(JSON.parse(localStorage.getItem('id')));
+        }
+        // eslint-disable-next-line
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('todoList', JSON.stringify(todoList));
+        localStorage.setItem('id', JSON.stringify(id));
+    }, [id, todoList]);
 
     const createTodoListItem = (name, description) => {
         setId(id + 1);

@@ -39,7 +39,7 @@ export const ItemContainer = styled.div`
                 left: -5px;
                 width: 100%;
                 padding: 5px;
-                content: "Enter task name";
+                content: attr(label);
                 border: 1px solid ${props => props.theme.primary};
                 border-radius: 3px;
                 color: ${props => props.theme.primary};
