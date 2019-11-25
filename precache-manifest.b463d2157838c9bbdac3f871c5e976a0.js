@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "081dc4d6d958ae32386d63d5b18ccd79",
+    "revision": "4860262f80f176549c1e217b4ef568de",
     "url": "/3shape-todo-app/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/3shape-todo-app/static/js/2.bfa6f901.chunk.js"
   },
   {
-    "revision": "44bd10957dce72c5002f",
-    "url": "/3shape-todo-app/static/js/main.b97639a8.chunk.js"
+    "revision": "15ab1681a83a008628db",
+    "url": "/3shape-todo-app/static/js/main.3481a401.chunk.js"
   },
   {
     "revision": "0055df9b28b05b144c18",

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/3shape-todo-app/precache-manifest.624cc18a76e44abc19a60893d70b99aa.js"
+  "/3shape-todo-app/precache-manifest.b463d2157838c9bbdac3f871c5e976a0.js"
 );
 
 self.addEventListener('message', (event) => {
