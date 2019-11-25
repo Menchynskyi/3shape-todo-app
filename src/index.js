@@ -18,6 +18,8 @@ const GlobalStyle = createGlobalStyle`
 const theme = {
     primary: '#D1004B',
     secondary: '#E28417',
+    disabled: '#be1352',
+    grey: '#F5F5F5',
     white: '#FFFFFF',
     black: '#000000',
     fontSize: '16px',
@@ -28,6 +30,6 @@ ReactDOM.render(
     <ThemeProvider theme={theme}>
         <GlobalStyle />
         <App />
-    </ThemeProvider>, 
+    </ThemeProvider>,
     document.getElementById('root')
 );

@@ -4,7 +4,7 @@ export const TasksContainer = styled.div`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    width: 100%;   
+    width: 100%;
 `;
 
 export const Task = styled.div`

@@ -11,7 +11,7 @@ export const AppContainer = styled.div`
 export const StyledButton = styled.button`
     width: calc(30% + 3.5rem + 2px);
     height: 50px;
-    margin: 3rem 0 3rem auto;
+    margin: 3rem 0 1.5rem auto;
     font-size: ${props => props.theme.fontSize};
     font-family: ${props => props.theme.fontFamily};
     color: ${props => props.theme.white};

@@ -2,22 +2,26 @@ import React, { createContext, useState } from 'react';
 import { NewItem } from './components/NewItem';
 import { ActiveItem } from './components/ActiveItem';
 import { TodoList } from './components/TodoList';
-import { Message } from './components/Message';
 import { AppContainer, StyledButton } from './AppStyled';
 
 export const TodoContext = createContext();
 
 const initialState = {
-    todoList: [],
+    todoList: [
+        { id: 1, name: 'Task 1', description: 'Task 1 description' },
+        { id: 2, name: 'Task 2', description: 'Task 2 description' },
+        { id: 3, name: 'Task 3', description: 'Task 3 description' },
+        { id: 4, name: 'Task 4', description: 'Task 4 description' }
+    ],
     active: null,
     showNew: true
 };
 
 export const App = () => {
     const [state, setState] = useState(initialState);
-    const [id, setId] = useState(0);
+    const [id, setId] = useState(100);
 
-    const { todoList, active } = state;
+    const { todoList, active, showNew } = state;
 
     const createTodoListItem = (name, description) => {
         setId(id + 1);
@@ -29,38 +33,39 @@ export const App = () => {
         };
     };
 
-    const getById = taskId => todoList.find(i => i.id === taskId);
+    const getById = (taskId) => todoList.find(i => i.id === taskId);
 
-    const deleteTask = taskId => {
+    const deleteTask = (taskId) => {
         const newTodoList = todoList.filter(i => i.id !== taskId);
 
         setState({
-            ...state, 
-            todoList: newTodoList, 
-            active: null 
+            ...state,
+            todoList: newTodoList,
+            active: null,
+            showNew: true
         });
     };
 
-    const changeTask = task => {
+    const changeTask = (task) => {
         const newTasks = todoList.map(t => {
             if (t.id === task.id) {
                 return task;
             };
-            
+
             return t;
         });
 
         setState({
-            ...state, 
-            todoList: newTasks, 
-            active: task 
+            ...state,
+            todoList: newTasks,
+            active: task
         });
     };
 
     const onShowNewTaskForm = () => {
         setState({
-            ...state, 
-            showNew: true, 
+            ...state,
+            showNew: true,
             active: null
         });
     };
@@ -69,8 +74,8 @@ export const App = () => {
         const activeItem = getById(id);
 
         setState({
-            ...state, 
-            showNew: false, 
+            ...state,
+            showNew: false,
             active: activeItem
         });
     };
@@ -93,30 +98,27 @@ export const App = () => {
         <TodoContext.Provider value={context}>
             <AppContainer>
 
-                { 
-                    state.active && 
-                    <ActiveItem 
+                {
+                    active &&
+                    <ActiveItem
                         key={active.id}
                         deleteTask={deleteTask}
                         changeTask={changeTask}
-                        /> 
-                }
-
-                { 
-                    state.showNew && 
-                    <NewItem  
-                        onAddFormSubmit={addTodoListItem}
-                        /> 
+                    />
                 }
 
                 {
-                    state.todoList.length > 0 ? 
-                    <TodoList onItemClick={onItemClick} /> : <Message text="Time to add new task!" />
+                    showNew &&
+                    <NewItem
+                        onAddFormSubmit={addTodoListItem}
+                    />
                 }
 
-                <StyledButton 
+                <TodoList onItemClick={onItemClick} />
+
+                <StyledButton
                     onClick={onShowNewTaskForm}
-                    >
+                >
                     ADD NEW TASK
                 </StyledButton>
 

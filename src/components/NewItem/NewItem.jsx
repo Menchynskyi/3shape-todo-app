@@ -9,6 +9,12 @@ import {
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 
+const validateField = (value) => {
+    const error = !value ? 'Empty' : undefined;
+
+    return error;
+};
+
 export const NewItem = ({ onAddFormSubmit }) => (
     <ItemContainer>
         <Formik
@@ -19,36 +25,41 @@ export const NewItem = ({ onAddFormSubmit }) => (
             onSubmit={(values, actions) => {
                 onAddFormSubmit(values.name, values.description);
                 actions.resetForm();
-            }}>
+            }}
+        >
                 {
-                    ({ handleSubmit, values, dirty, handleReset }) => (
-                        <AddForm onSubmit={handleSubmit}>
-                            <StyledFieldName 
-                                placeholder="Type task name..." 
-                                name="name" 
-                                value={values.name} 
+                    ({ handleSubmit, values, dirty, handleReset, errors }) => {
+                        return (
+                            <AddForm onSubmit={handleSubmit}>
+                                <StyledFieldName 
+                                    validate={validateField}
+                                    placeholder="Type task name..." 
+                                    name="name" 
+                                    value={values.name} 
                                 />
-                            <hr />
-                            <StyledFieldDescription 
-                                placeholder="Type task description..." 
-                                name="description" 
-                                value={values.description}
-                                component="textarea"
-                                rows="5" 
+                                <hr />
+                                <StyledFieldDescription 
+                                    placeholder="Type task description..." 
+                                    name="description" 
+                                    value={values.description}
+                                    component="textarea"
+                                    rows="5" 
                                 />
-                            <CancelButton
-                                type="button" 
-                                onClick={handleReset}
+                                <CancelButton
+                                    type="button" 
+                                    onClick={handleReset}
                                 >
-                                CANCEL
-                            </CancelButton>
-                            <SaveButton 
-                                disabled={!dirty}
-                                type="submit">
-                                ADD
-                            </SaveButton>
-                        </AddForm>
-                    )
+                                    CANCEL
+                                </CancelButton>
+                                <SaveButton 
+                                    disabled={!dirty || errors.name}
+                                    type="submit"
+                                >
+                                    ADD
+                                </SaveButton>
+                            </AddForm>
+                        )
+                    }
                 }
         </Formik>
     </ItemContainer>

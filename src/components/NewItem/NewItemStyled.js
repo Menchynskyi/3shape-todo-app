@@ -13,6 +13,9 @@ export const ItemContainer = styled.div`
     };
 
     & button{
+        font-family: ${props => props.theme.fontFamily};
+        position: relative;
+
         &:hover {
             cursor: pointer;
         };
@@ -27,6 +30,21 @@ export const ItemContainer = styled.div`
 
         &[disabled] {
             cursor: not-allowed;
+            background-color: ${props => props.theme.disabled};
+            color: ${props => props.theme.grey};
+
+             &:hover:after {
+                position: absolute;
+                top: -55px; 
+                left: -5px;
+                width: 100%;
+                padding: 5px;
+                content: "Enter task name";
+                border: 1px solid ${props => props.theme.primary};
+                border-radius: 3px;
+                color: ${props => props.theme.primary};
+                font-weight: bold;
+             };
         };
     };
 `;

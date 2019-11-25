@@ -10,7 +10,8 @@ export const TodoList = ({ onItemClick }) => {
         return arr.map(({ id, name }) => (
             <Task 
                 key={id}
-                onClick={() => onItemClick(id)}>
+                onClick={() => onItemClick(id)}
+            >
                 <span>{name}</span>
             </Task>
         ))
